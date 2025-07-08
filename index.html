@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8"/>
+  <title>Ray Services</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #d60000;
+      font-size: 22px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .service-box {
+      padding: 10px;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #000;
+      border: 1px solid #ccc;
+      transition: 0.3s;
+    }
+    .service-box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .service-box.selected {
+      background-color: #002B5B !important; /* Navy Blue */
+      color: #ffffff !important;
+      box-shadow: 0 0 10px rgba(0, 43, 91, 0.5);
+      transform: scale(1.05);
+    }
+    #requestForm {
+      display: none;
+      margin-top: 20px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    input, select {
+      padding: 14px;
+      margin: 10px 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      padding: 14px;
+      width: 100%;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+      animation: pulse 2s infinite, bounce 1.5s infinite;
+    }
+    button:hover {
+      background: #1eb15e;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    #charges {
+      margin-top: 10px;
+      font-weight: bold;
+      color: green;
+      font-size: 18px;
+    }
+    header {
+      text-align: center;
+      background: #003366;
+      color: #fff;
+      padding: 15px 0;
+      border-radius: 8px;
+    }
+    header h2 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    header p {
+      margin: 3px 0;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>RAY SERVICES</h2>
+    <p>One Stop Solution for Government, Business & Media Services</p>
+    <p>📞 7746969000 | 📞 7987332253 | 📧 rayservices.cg@gmail.com</p>
+  </header>
+
+  <h1>अपनी जरूरत की सेवाएं चुनें और नीचे अपना नाम, मोबाइल नंबर व स्थान भरकर <span style="color:#25D366; font-weight:bold;">Send on WhatsApp</span> बटन दबाएं।</h1>
+
+  <div class="services-grid" id="servicesList"></div>
+
+  <div id="requestForm">
+    <h3 style="text-align:center;">👇 अपनी जानकारी नीचे भरें</h3>
+    <input id="name" placeholder="नाम" type="text"/>
+    <input id="phone" placeholder="मोबाइल नंबर" type="tel" pattern="\d{10}" maxlength="10"/>
+    <input id="location" placeholder="स्थान" type="text"/>
+    <input id="service" type="hidden"/>
+    <label>डिलीवरी विकल्प चुनें:</label>
+    <select id="delivery">
+      <option value="shop">दुकान से लेंगे (₹0)</option>
+      <option value="cg">पोस्ट (छत्तीसगढ़ ₹49)</option>
+      <option value="other">पोस्ट (अन्य राज्य ₹149)</option>
+    </select>
+    <div id="charges"></div>
+    <button onclick="submitForm()">📲 Send on WhatsApp</button>
+  </div>
+
+  <footer style="text-align:center; background:#d60000; color:#fff; padding:10px; margin-top:30px; border-radius: 8px;">
+    Ward 60, Ayodhya Nagar, Raipur, Chhattisgarh | सभी प्रकार के ऑनलाइन कार्य किये जाते हैं
+  </footer>
+
+  <script>
+    const selectedServices = [];
+    const serviceRates = {
+      'पैन कार्ड नया': 350, 'पैन नंबर रिकवरी (गुम)': 500, 'पैन रीप्रिंट (रिकवरी के बाद)': 350,
+      'पैन सुधार': 1000,'Partnership PAN': 1550,'SOLO Firm PAN': 2500, 'डुप्लीकेट पैन हटाना': 12000, 'पैन PVC': 80, 'आधार एड्रेस अपडेट': 250,
+      'आधार PVC': 80, 'नया आयुष्मान कार्ड': 150, 'आयुष्मान KYC': 100, 'आयुष्मान PVC कार्ड': 80,
+      'वोटर कार्ड नया आवेदन': 500, 'वोटर कार्ड सुधार': 300, 'वोटर कार्ड PVC': 80,
+      ' पासपोर्ट NEW / RENEW': 3500, 'DL लर्निंग': 1800, 'DL परमानेंट': 3000,
+      'DL दोनों साथ में': 4500, 'DL नंबर रिकवरी (गुम)': 600, 'DL रीप्रिंट (रिकवरी के बाद)': 1400,
+      'A4 लैमिनेशन': 30, 'पासपोर्ट फोटो (8 फोटो)': 50, 'ID कार्ड PVC': 80, 'Insurance*': 100,
+      'CIBIL Report': 1000, 'Loan*': 5000, 'बिल बुक (10 Bill Book)': 2000,
+      'लेटर हेड (20 Pages)': 300, 'HSRP*': 150, 'RC पर मोबाइल नंबर जोड़ना': 200,
+      'RTO कार्य': 1000, 'नक्शा खसरा, बी I, पी- II': 30, 'ऑनलाइन फॉर्म भरना': 150,
+      'हिंदी/अंग्रेज़ी एप्लीकेशन': 200, 'ITR इनकम टैक्स रिटर्न*': 1000, 'GST रजिस्ट्रेशन व रिटर्न': 1500,
+      'GST वार्षिक रिटर्न': 12000, 'उद्योग आधार': 1000, 'Rental Agreement': 500,
+      'Office प्रोजेक्ट': 500, 'पुरानी फोटो एडिटिंग': 500, 'विजिटिंग कार्ड': 500,
+      'College Project File': 1500, 'गुमास्ता / फूड': 2500, 'Import Export Code': 3000,
+      'Loan Project Report': 2500, 'Contract Drafting': 2500, 'फोटोग्राफी और वीडियोग्राफी': 3500,
+      'CCTV कैमरा इंस्टॉलेशन (4 कैमरा)': 1500, 'Startup Consultancy Services': 6000,
+      'Online Marketing (Domain + Hosting + Website)': 10000,
+      'Offline Marketing (1 GSB Board* + visiting card)': 12000,
+      'Gazette Name Change': 15000
+    };
+
+    function toggleService(elem) {
+      const serviceName = elem.innerText.trim();
+      const index = selectedServices.indexOf(serviceName);
+      if (index > -1) {
+        selectedServices.splice(index, 1);
+        elem.classList.remove('selected');
+      } else {
+        selectedServices.push(serviceName);
+        elem.classList.add('selected');
+      }
+      document.getElementById('service').value = selectedServices.join(', ');
+      document.getElementById('requestForm').style.display = selectedServices.length ? 'block' : 'none';
+      updateCharges();
+    }
+
+    function updateCharges() {
+      let total = 0;
+      selectedServices.forEach(service => {
+        if (serviceRates[service]) {
+          total += serviceRates[service];
+        }
+      });
+      document.getElementById('charges').innerHTML = '<b>कुल राशि: ₹' + total + '</b>';
+    }
+
+    function submitForm() {
+      let name = document.getElementById('name').value.trim();
+      let phone = document.getElementById('phone').value.trim();
+      let location = document.getElementById('location').value.trim();
+      let service = document.getElementById('service').value.trim();
+      let delivery = document.getElementById('delivery').value;
+
+      let deliveryText = '';
+      if (delivery === 'shop') deliveryText = 'दुकान से लेंगे (₹0)';
+      else if (delivery === 'cg') deliveryText = 'पोस्ट द्वारा - छत्तीसगढ़ (₹49)';
+      else deliveryText = 'पोस्ट द्वारा - अन्य राज्य (₹149)';
+
+      if (!phone || phone.length !== 10 || !/^\d{10}$/.test(phone)) {
+        alert('कृपया सही मोबाइल नंबर दर्ज करें।');
+        return;
+      }
+
+      if (name && phone && location && service) {
+        let message = `सेवा अनुरोध:%0aनाम: ${name}%0aफोन: ${phone}%0aस्थान: ${location}%0aसेवाएं: ${service}%0aडिलीवरी: ${deliveryText}`;
+        window.open(`https://wa.me/917746969000?text=${message}`, '_blank');
+      } else {
+        alert('कृपया सभी जानकारी भरें।');
+      }
+    }
+
+    window.onload = function () {
+      const container = document.getElementById('servicesList');
+      const services = Object.keys(serviceRates);
+
+      services.forEach((service, i) => {
+        const box = document.createElement('div');
+        box.className = 'service-box';
+        box.innerText = service;
+        box.onclick = function () { toggleService(this); };
+
+        if (i < 16) {
+          box.style.backgroundColor = '#FF9933'; // saffron
+          box.style.color = '#000';
+        } else if (i < 32) {
+          box.style.backgroundColor = '#FFFFFF'; // white
+          box.style.color = '#000';
+        } else if (i < 48) {
+          box.style.backgroundColor = '#138808'; // green
+          box.style.color = '#fff';
+        } else {
+          box.style.backgroundColor = '#0a6e04'; // dark green
+          box.style.color = '#fff';
+        }
+
+        container.appendChild(box);
+      });
+    };
+  </script>
+</body>
+</html>
