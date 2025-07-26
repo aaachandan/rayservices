@@ -29,13 +29,14 @@
       color: #000;
       border: 1px solid #ccc;
       transition: 0.3s;
+      user-select: none;
     }
     .service-box:hover {
       transform: scale(1.03);
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .service-box.selected {
-      background-color: #002B5B !important; /* Navy Blue */
+      background-color: #002B5B !important;
       color: #ffffff !important;
       box-shadow: 0 0 10px rgba(0, 43, 91, 0.5);
       transform: scale(1.05);
@@ -104,6 +105,43 @@
       margin: 3px 0;
       font-size: 18px;
     }
+    /* Payment section hide initially */
+    #paymentSection {
+      display: none;
+      margin-top: 40px;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      text-align: center;
+      font-size: 18px;
+      color: #222;
+    }
+    #paymentSection h3 {
+      color: #d60000;
+      margin-bottom: 15px;
+    }
+    #upiLink {
+      color: #25D366;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    #upiQRCode {
+      margin-top: 15px;
+      width: 150px;
+      height: 150px;
+      border: 2px solid #25D366;
+      border-radius: 15px;
+    }
+    #printingLink {
+      margin-top: 25px;
+      font-size: 18px;
+      color: #002B5B;
+      cursor: pointer;
+      text-decoration: underline;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -133,8 +171,28 @@
     <button onclick="submitForm()">📲 Send on WhatsApp</button>
   </div>
 
-  <footer style="text-align:center; background:#d60000; color:#fff; padding:10px; margin-top:30px; border-radius: 8px;">
-    Ward 60, Ayodhya Nagar, Raipur, Chhattisgarh | सभी प्रकार के ऑनलाइन कार्य किये जाते हैं
+  <!-- QR Payment Section -->
+  <div id="paymentSection">
+    <h3>UPI से भुगतान करें</h3>
+    <div>
+      UPI ID: <span id="upiLink" onclick="copyUPI()">RAPI00106761@AUBANK</span><br/>
+      (यहां क्लिक करें UPI ID कॉपी करने के लिए)
+    </div>
+    <img 
+      id="upiQRCode" 
+      alt="UPI QR Code" 
+      src="https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=upi%3Apay%3A%3Fpa%3DRAPI00106761%40AUBANK%26pn%3DRay%20Services%26cu%3DINR" 
+      title="Scan QR to pay to RAPI00106761@AUBANK"
+    />
+  </div>
+
+  <footer style="text-align:center; background:#d60000; color:#fff; padding:10px; margin-top:30px; border-radius: 8px; font-size: 14px; letter-spacing: 0.5px;">
+    © 2025 Ray Services. All rights reserved. | सभी प्रकार के ऑनलाइन कार्य किये जाते हैं | 
+    <a href="https://rayprint.netlify.app/" target="_blank" 
+       style="color:#ffeb3b; text-decoration:none; font-weight:bold; transition: color 0.3s ease;" 
+       onmouseover="this.style.color='#ffff87';" onmouseout="this.style.color='#ffeb3b';">
+      Printing Services
+    </a>
   </footer>
 
   <script>
@@ -164,6 +222,9 @@
     function toggleService(elem) {
       const serviceName = elem.innerText.trim();
       const index = selectedServices.indexOf(serviceName);
+      const form = document.getElementById('requestForm');
+      const payment = document.getElementById('paymentSection');
+
       if (index > -1) {
         selectedServices.splice(index, 1);
         elem.classList.remove('selected');
@@ -171,8 +232,18 @@
         selectedServices.push(serviceName);
         elem.classList.add('selected');
       }
+
       document.getElementById('service').value = selectedServices.join(', ');
-      document.getElementById('requestForm').style.display = selectedServices.length ? 'block' : 'none';
+
+      // Show/hide form and payment section
+      if (selectedServices.length > 0) {
+        form.style.display = 'block';
+        payment.style.display = 'block';
+      } else {
+        form.style.display = 'none';
+        payment.style.display = 'none';
+      }
+
       updateCharges();
     }
 
@@ -211,6 +282,15 @@
       }
     }
 
+    function copyUPI() {
+      const upiID = 'RAPI00106761@AUBANK';
+      navigator.clipboard.writeText(upiID).then(() => {
+        alert('UPI ID कॉपी हो गया है: ' + upiID);
+      }, () => {
+        alert('UPI ID कॉपी करने में समस्या आई। कृपया मैन्युअली कॉपी करें: ' + upiID);
+      });
+    }
+
     window.onload = function () {
       const container = document.getElementById('servicesList');
       const services = Object.keys(serviceRates);
@@ -222,16 +302,16 @@
         box.onclick = function () { toggleService(this); };
 
         if (i < 16) {
-          box.style.backgroundColor = '#FF9933'; // saffron
+          box.style.backgroundColor = '#FF9933';
           box.style.color = '#000';
         } else if (i < 32) {
-          box.style.backgroundColor = '#FFFFFF'; // white
+          box.style.backgroundColor = '#FFFFFF';
           box.style.color = '#000';
         } else if (i < 48) {
-          box.style.backgroundColor = '#138808'; // green
+          box.style.backgroundColor = '#138808';
           box.style.color = '#fff';
         } else {
-          box.style.backgroundColor = '#0a6e04'; // dark green
+          box.style.backgroundColor = '#0a6e04';
           box.style.color = '#fff';
         }
 
