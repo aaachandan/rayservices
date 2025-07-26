@@ -29,14 +29,13 @@
       color: #000;
       border: 1px solid #ccc;
       transition: 0.3s;
-      user-select: none;
     }
     .service-box:hover {
       transform: scale(1.03);
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .service-box.selected {
-      background-color: #002B5B !important;
+      background-color: #002B5B !important; /* Navy Blue */
       color: #ffffff !important;
       box-shadow: 0 0 10px rgba(0, 43, 91, 0.5);
       transform: scale(1.05);
@@ -105,42 +104,6 @@
       margin: 3px 0;
       font-size: 18px;
     }
-    #paymentSection {
-      display: none;
-      margin-top: 40px;
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-      text-align: center;
-      font-size: 18px;
-      color: #222;
-    }
-    #paymentSection h3 {
-      color: #d60000;
-      margin-bottom: 15px;
-    }
-    #upiLink {
-      color: #25D366;
-      font-weight: bold;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-    #upiQRCode {
-      margin-top: 15px;
-      width: 150px;
-      height: 150px;
-      border: 2px solid #25D366;
-      border-radius: 15px;
-    }
-    #printingLink {
-      margin-top: 25px;
-      font-size: 18px;
-      color: #002B5B;
-      cursor: pointer;
-      text-decoration: underline;
-      display: inline-block;
-    }
   </style>
 </head>
 <body>
@@ -206,9 +169,6 @@
     function toggleService(elem) {
       const serviceName = elem.innerText.trim();
       const index = selectedServices.indexOf(serviceName);
-      const form = document.getElementById('requestForm');
-      const payment = document.getElementById('paymentSection');
-
       if (index > -1) {
         selectedServices.splice(index, 1);
         elem.classList.remove('selected');
@@ -216,17 +176,8 @@
         selectedServices.push(serviceName);
         elem.classList.add('selected');
       }
-
       document.getElementById('service').value = selectedServices.join(', ');
-
-      if (selectedServices.length > 0) {
-        form.style.display = 'block';
-        payment.style.display = 'block';
-      } else {
-        form.style.display = 'none';
-        payment.style.display = 'none';
-      }
-
+      document.getElementById('requestForm').style.display = selectedServices.length ? 'block' : 'none';
       updateCharges();
     }
 
@@ -238,7 +189,6 @@
         }
       });
       document.getElementById('charges').innerHTML = '<b>कुल राशि: ₹' + total + '</b>';
-      document.getElementById('totalAmount').innerText = total;
     }
 
     function submitForm() {
@@ -266,24 +216,6 @@
       }
     }
 
-    function payNow() {
-      const total = document.getElementById('totalAmount').innerText;
-      if (parseInt(total) > 0) {
-        alert("अब आप ₹" + total + " का भुगतान करें।\nUPI से भुगतान करने के लिए ऊपर दिए गए QR या UPI ID का उपयोग करें।");
-      } else {
-        alert("कोई सेवा चयनित नहीं है। कृपया पहले कोई सेवा चुनें।");
-      }
-    }
-
-    function copyUPI() {
-      const upiID = 'RAPI00106761@AUBANK';
-      navigator.clipboard.writeText(upiID).then(() => {
-        alert('UPI ID कॉपी हो गया है: ' + upiID);
-      }, () => {
-        alert('UPI ID कॉपी करने में समस्या आई। कृपया मैन्युअली कॉपी करें: ' + upiID);
-      });
-    }
-
     window.onload = function () {
       const container = document.getElementById('servicesList');
       const services = Object.keys(serviceRates);
@@ -295,16 +227,16 @@
         box.onclick = function () { toggleService(this); };
 
         if (i < 16) {
-          box.style.backgroundColor = '#FF9933';
+          box.style.backgroundColor = '#FF9933'; // saffron
           box.style.color = '#000';
         } else if (i < 32) {
-          box.style.backgroundColor = '#FFFFFF';
+          box.style.backgroundColor = '#FFFFFF'; // white
           box.style.color = '#000';
         } else if (i < 48) {
-          box.style.backgroundColor = '#138808';
+          box.style.backgroundColor = '#138808'; // green
           box.style.color = '#fff';
         } else {
-          box.style.backgroundColor = '#0a6e04';
+          box.style.backgroundColor = '#0a6e04'; // dark green
           box.style.color = '#fff';
         }
 
