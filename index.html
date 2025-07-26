@@ -105,7 +105,6 @@
       margin: 3px 0;
       font-size: 18px;
     }
-    /* Payment section hide initially */
     #paymentSection {
       display: none;
       margin-top: 40px;
@@ -171,21 +170,6 @@
     <button onclick="submitForm()">📲 Send on WhatsApp</button>
   </div>
 
-  <!-- QR Payment Section -->
-  <div id="paymentSection">
-    <h3>UPI से भुगतान करें</h3>
-    <div>
-      UPI ID: <span id="upiLink" onclick="copyUPI()">RAPI00106761@AUBANK</span><br/>
-      (यहां क्लिक करें UPI ID कॉपी करने के लिए)
-    </div>
-    <img 
-      id="upiQRCode" 
-      alt="UPI QR Code" 
-      src="https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=upi%3Apay%3A%3Fpa%3DRAPI00106761%40AUBANK%26pn%3DRay%20Services%26cu%3DINR" 
-      title="Scan QR to pay to RAPI00106761@AUBANK"
-    />
-  </div>
-
   <footer style="text-align:center; background:#d60000; color:#fff; padding:10px; margin-top:30px; border-radius: 8px; font-size: 14px; letter-spacing: 0.5px;">
     © 2025 Ray Services. All rights reserved. | सभी प्रकार के ऑनलाइन कार्य किये जाते हैं | 
     <a href="https://rayprint.netlify.app/" target="_blank" 
@@ -235,7 +219,6 @@
 
       document.getElementById('service').value = selectedServices.join(', ');
 
-      // Show/hide form and payment section
       if (selectedServices.length > 0) {
         form.style.display = 'block';
         payment.style.display = 'block';
@@ -255,6 +238,7 @@
         }
       });
       document.getElementById('charges').innerHTML = '<b>कुल राशि: ₹' + total + '</b>';
+      document.getElementById('totalAmount').innerText = total;
     }
 
     function submitForm() {
@@ -279,6 +263,15 @@
         window.open(`https://wa.me/917746969000?text=${message}`, '_blank');
       } else {
         alert('कृपया सभी जानकारी भरें।');
+      }
+    }
+
+    function payNow() {
+      const total = document.getElementById('totalAmount').innerText;
+      if (parseInt(total) > 0) {
+        alert("अब आप ₹" + total + " का भुगतान करें।\nUPI से भुगतान करने के लिए ऊपर दिए गए QR या UPI ID का उपयोग करें।");
+      } else {
+        alert("कोई सेवा चयनित नहीं है। कृपया पहले कोई सेवा चुनें।");
       }
     }
 
