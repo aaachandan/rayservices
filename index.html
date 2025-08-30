@@ -38,7 +38,6 @@
       letter-spacing: normal;
       color: #a9cce3;
     }
-
     .container {
       padding: 20px;
       max-width: 1000px;
@@ -149,7 +148,7 @@
       <tr><td>Flex Board Star</td><td>60</td>    <td>Glow Sign Board (GSB)</td><td>250</td></tr>
       <tr><td>GSB Repairing</td><td>80</td>      <td>ACP Elevation</td><td>200</td></tr>
       <tr><td>ACP Repairing</td><td>90</td>      <td>GSB (Flatbed)</td><td>260</td></tr>
-      <tr><td>GSB (Double Side Flatbed)</td>   <td>280</td> <td>Poll Board (20 Fetting extra)</td><td>170</td></tr>
+      <tr><td>GSB (Double Side Flatbed)</td><td>280</td> <td>Poll Board (20 Fetting extra)</td><td>170</td></tr>
       <tr><td>Board Inspection</td><td>300</td>  <td>Visiting Card (500 pcs)</td><td>600</td></tr>
       <tr><td>LED Board (per sq.ft.)</td><td>750</td> <td>LED Service Charge (with SMPS)</td><td>2000</td></tr>
       <tr>
@@ -158,7 +157,7 @@
       </tr>
       <tr>
         <td>होल्डर (1000 pcs)</td><td>6</td>
-        <td>Glow Sign Installation</td><td>200–500 प्रति Board</td>
+        <td>Glow Sign Installation</td><td>500</td>
       </tr>
       <tr>
         <td>Flex Installation</td><td>10</td>
@@ -179,11 +178,11 @@
           required pattern="[6-9]{1}[0-9]{9}" maxlength="10" />
 
         <label for="location">स्थान:</label>
-        <input list="locationList" id="location" name="location" placeholder="जैसे: 5km, 10km या टाइप करें" required />
+        <input list="locationList" id="location" name="location" placeholder="जैसे: 5 km, 10 km" required />
         <datalist id="locationList">
-          <option value="5km"></option>
-          <option value="10km"></option>
-          <option value="20km"></option>
+          <option value="5 km"></option>
+          <option value="10 km"></option>
+          <option value="20 km"></option>
         </datalist>
 
         <label for="type">प्रिंटिंग प्रकार चुनें:</label>
@@ -204,14 +203,15 @@
           <option value="GSB (Double Side Flatbed)|280">GSB (Double Side Flatbed) - ₹280</option>
           <option value="Poll Board*20 Fetting extra|170">Poll Board*20 Fetting extra - ₹170</option>
           <option value="Board Inspection|300">Board Inspection - ₹300</option>
-          <option value="Visiting Card|1.2">Visiting Card (500 pcs) - ₹600</option>
+          <option value="Visiting Card|600">Visiting Card (500 pcs) - ₹600</option>
           <option value="PVC Card|30">PVC Card (1000 pcs) - ₹30</option>
           <option value="Dori|30">Dori (1000 pcs) - ₹30</option>
           <option value="Holder|6">Card Holder (1000 pcs) - ₹6</option>
+          <option value="Glow Sign Installation|500">Glow Sign Installation - ₹500 </option>
         </select>
 
-        <label for="area">आवश्यक क्षेत्रफल या पीस:</label>
-        <input type="number" id="area" name="area" placeholder="उदा: 50" min="1" required />
+        <label for="area">आवश्यक क्षेत्रफल या पीस / बोर्ड:</label>
+        <input type="number" id="area" name="area" placeholder="उदा: 3" min="1" required />
 
         <label for="total">कुल कीमत:</label>
         <input type="text" id="total" name="total" readonly style="background: #e0f0e0; font-weight: bold" />
@@ -225,7 +225,7 @@
   </div>
 
   <footer>
-    © 2025 Ray Services by Dada | 
+    © 2025 Ray Services | 
     <a href="https://rayservicescg.netlify.app" target="_blank" rel="noopener noreferrer">Other Services</a>
   </footer>
 
@@ -234,14 +234,17 @@
     const typeSelect = document.getElementById("type");
     const totalInput = document.getElementById("total");
     const form = document.getElementById("printForm");
+    const whatsappNumber = "917746969000"; // +91 के साथ
 
     function calculateTotal() {
       let selected = typeSelect.value.split("|");
-      if (selected.length === 2 && areaInput.value && !isNaN(areaInput.value)) {
+      if (selected.length !== 2) { totalInput.value = ""; return; }
+
+      if (areaInput.value && !isNaN(areaInput.value)) {
         let rate = parseFloat(selected[1]);
-        let area = parseFloat(areaInput.value);
-        let total = rate * area;
-        totalInput.value = `₹ ${total.toFixed(2)}`;
+        let qty = parseFloat(areaInput.value);
+        let total = rate * qty;
+        totalInput.value = `₹ ${total.toLocaleString("en-IN")}`;
       } else {
         totalInput.value = "";
       }
@@ -268,15 +271,16 @@
       if (!location) { alert("कृपया स्थान दर्ज करें।"); form.location.focus(); return; }
       if (!type) { alert("कृपया प्रिंटिंग प्रकार चुनें।"); form.type.focus(); return; }
       if (!area || isNaN(area) || Number(area) <= 0) {
-        alert("कृपया क्षेत्रफल या पीस सही दर्ज करें।");
+        alert("कृपया मात्रा/बोर्ड सही दर्ज करें।");
         form.area.focus(); return;
       }
       if (!total) { alert("कृपया कुल कीमत की गणना करें।"); return; }
 
-      let message = `👋 नमस्ते!\n\nमैं सेवा के लिए जानकारी चाहता हूँ:\n\nनाम: ${name}\nमोबाइल: ${mobile}\nस्थान: ${location}\nसेवा: ${type}\nमात्रा/क्षेत्रफल: ${area}\nकुल कीमत: ${total}\nअतिरिक्त जानकारी: ${extra}`;
-      let whatsappURL = `https://wa.me/917746969000?text=${encodeURIComponent(message)}`;
+      let message = `👋 नमस्ते!\n\nमैं सेवा के लिए जानकारी चाहता हूँ:\n\nनाम: ${name}\nमोबाइल: ${mobile}\nस्थान: ${location}\nसेवा: ${type}\nमात्रा/बोर्ड: ${area}\nकुल कीमत: ${total}\nअतिरिक्त जानकारी: ${extra}`;
+      let whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
       window.open(whatsappURL, "_blank");
 
+      alert("✅ आपका ऑर्डर WhatsApp पर भेज दिया गया है!");
       form.reset();
       totalInput.value = "";
       form.name.focus();
@@ -284,6 +288,3 @@
   </script>
 </body>
 </html>
-
-
-
