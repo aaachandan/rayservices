@@ -1,7 +1,9 @@
-<!DOCTYPE html> <html lang="hi"> <head>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ray Services - Printing</title>
+  <title>Ray Services </title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -23,19 +25,17 @@
       font-weight: 900;
       line-height: 1.2;
     }
-    header p {
-      margin: 8px 0 0 0;
-      font-size: 22px;
+    header p { margin: 8px 0 0 0; font-size: 22px; font-weight: bold; letter-spacing: 2px; }
+    header p.email { margin: 4px 0 0 0; font-size: 18px; color: #a9cce3; }
+
+    .tagline {
+      font-size: 17px;
+      margin-top: 8px;
       font-weight: bold;
-      letter-spacing: 2px;
+      color: #d1ecf1;
+      letter-spacing: 1px;
     }
-    header p.email {
-      margin: 4px 0 0 0;
-      font-size: 18px;
-      font-weight: normal;
-      letter-spacing: normal;
-      color: #a9cce3;
-    }
+
     .container {
       padding: 20px;
       max-width: 1000px;
@@ -44,248 +44,101 @@
       border-radius: 8px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     }
+
     .price-table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
     }
+
     .price-table th, .price-table td {
       border: 1px solid #ddd;
       padding: 12px;
       text-align: center;
       font-weight: bold;
     }
-    .price-table th {
-      background: #37474f;
-      color: white;
-    }
-    .price-table tr:nth-child(even) {
-      background-color: #f1f1f1;
-    }
-    .form-section {
-      margin-top: 30px;
-    }
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-      font-size: 18px;
-    }
-    input, select, textarea, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 18px;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    input:focus, select:focus, textarea:focus {
-      outline-color: #1976d2;
-      border-color: #1976d2;
-    }
-    button {
-      height: 50px;
-      font-weight: 900;
-      font-size: 20px;
-      border: none;
-      background: #25D366;
-      color: white;
-      cursor: pointer;
-      margin-top: 20px;
-      border-radius: 4px;
-      transition: background 0.3s ease;
-      animation: pulse 2.5s infinite;
-    }
-    button:hover {
-      background: #1ebe5d;
-      animation: none;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-      70% { box-shadow: 0 0 10px 10px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-    }
+
+    .price-table th { background: #37474f; color: white; }
+    .price-table tr:nth-child(even) { background-color: #f1f1f1; }
+
     footer {
       background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-      color: white;
-      text-align: center;
+      color: white; 
+      text-align: center; 
       padding: 20px 10px;
-      margin-top: 30px;
-      font-size: 16px;
+      margin-top: 30px; 
+      font-size: 16px; 
       font-weight: bold;
       border-top: 2px solid #37474f;
     }
-    footer a {
-      color: #81d4fa;
-      text-decoration: none;
+    footer a { color: #81d4fa; text-decoration: none; font-weight: bold; }
+
+    .footer-tagline {
+      font-size: 15px;
+      margin-bottom: 8px;
+      color: #b2ebf2;
       font-weight: bold;
-      margin-left: 5px;
     }
-    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Ray Services - Printing & Installation Rates</h1>
-    <p>📞 7746969000 , 9098411044</p>
-    <p class="email">✉️ rayservices.cg@gmail.com</p>
-  </header>
 
-  <div class="container">
-    <h2 style="text-align:center;">प्रिंटिंग प्रकार व दरें (Per Sq. Ft.)</h2>
-    <table class="price-table">
-      <tr>
-        <th>सेवा</th><th>दर (₹)</th>
-        <th>सेवा</th><th>दर (₹)</th>
-      </tr>
-      <tr><td>Normal Flex</td><td>12</td>        <td>Star Flex</td><td>18</td></tr>
-      <tr><td>ECO Solvent flex</td><td>70</td>   <td>Flex Board</td><td>50</td></tr>
-      <tr><td>Vinyl (Plain)</td><td>35</td>      <td>Vinyl + Sunboard</td><td>80</td></tr>
-      <tr><td>Flex Board Star</td><td>60</td>    <td>Glow Sign Board (GSB)</td><td>250</td></tr>
-      <tr><td>GSB Repairing</td><td>80</td>      <td>ACP Elevation</td><td>200</td></tr>
-      <tr><td>ACP Repairing</td><td>90</td>      <td>GSB (Flatbed)</td><td>260</td></tr>
-      <tr><td>GSB (Double Side Flatbed)</td><td>280</td> <td>Poll Board (20 Fetting extra)</td><td>170</td></tr>
-      <tr><td>Board Inspection</td><td>300</td>  <td>Visiting Card (500 pcs)</td><td>600</td></tr>
-      <tr><td>LED Board (per sq.ft.)</td><td>750</td> <td>LED Service Charge (with SMPS)</td><td>2000</td></tr>
-      <tr><td>PVC कार्ड (1000 pcs)</td><td>30</td> <td>डोरी (Lanyard, 1000 pcs)</td><td>30</td></tr>
-      <tr><td>होल्डर (1000 pcs)</td><td>6</td> <td>Glow Sign Installation</td><td>500</td></tr>
-      <tr><td>Flex Installation</td><td>10</td> <td>Vinyl Installation</td><td>20</td></tr>
-      <tr><td>Acrylic UV Boards (Logo)</td><td>799</td> <td>Neon Sign Boards (Cafe/Shop)</td><td>699</td></tr>
-      <tr><td>Aluminium Led Clip On Frame</td><td>299</td> <td>Inner Cutting LED Board</td><td>1099</td></tr>
-      <tr><td colspan="4" style="color:red; font-weight:bold;">⚠️ क्रिएटिव डिज़ाइन, फिटिंग और ट्रेवल चार्ज अलग से लागू होंगे।</td></tr>
-    </table>
+<header>
+  <h1>Ray Services </h1>
 
-    <!-- Order Form -->
-    <div class="form-section">
-      <h2 style="text-align:center; font-size:22px; font-weight:bold;">अपना ऑर्डर डिटेल भेजें</h2>
-      <form id="printForm" novalidate>
-        <label for="name">नाम:</label>
-        <input type="text" id="name" name="name" placeholder="अपना नाम भरें" required />
+  <!-- ⭐ Added Tagline -->
+  <div class="tagline">Printing • Branding & Advertising Services Provider</div>
+  
 
-        <label for="mobile">मोबाइल नंबर:</label>
-        <input type="tel" id="mobile" name="mobile" placeholder="10 अंकों का मोबाइल नंबर"
-          required pattern="[6-9]{1}[0-9]{9}" maxlength="10" inputmode="numeric" autocomplete="tel" />
+  <p>📞 7746969000 , 9098411044</p>
+  <p class="email">✉️ rayservices.cg@gmail.com</p>
+</header>
 
-        <label for="location">स्थान:</label>
-        <input list="locationList" id="location" name="location" placeholder="जैसे: 5 km, 10 km" required />
-        <datalist id="locationList">
-          <option value="5 km"></option>
-          <option value="10 km"></option>
-          <option value="20 km"></option>
-        </datalist>
+<div class="container">
+  <h2 style="text-align:center;">प्रिंटिंग प्रकार व दरें (Per Sq. Ft.)</h2>
 
-        <label for="type">प्रिंटिंग प्रकार चुनें:</label>
-        <select id="type" name="type" required>
-          <option value="">-- चयन करें --</option>
-          <option value="Normal Flex|12">Normal Flex - ₹12</option>
-          <option value="Star Flex|18">Star Flex - ₹18</option>
-          <option value="Vinyl Plain|35">Vinyl Plain - ₹35</option>
-          <option value="Vinyl + Sunboard|80">Vinyl + Sunboard - ₹80</option>
-          <option value="ECO Solvent flex|70">ECO Solvent flex - ₹70</option>
-          <option value="Flex Board|50">Flex Board - ₹50</option>
-          <option value="Flex Board Star|60">Flex Board Star - ₹60</option>
-          <option value="Glow Sign Board|250">Glow Sign Board - ₹250</option>
-          <option value="GSB Repairing|80">GSB Repairing - ₹80</option>
-          <option value="ACP Elevation|200">ACP Elevation - ₹200</option>
-          <option value="ACP Repairing|90">ACP Repairing - ₹90</option>
-          <option value="GSB (Flatbed)|260">GSB (Flatbed) - ₹260</option>
-          <option value="GSB (Double Side Flatbed)|280">GSB (Double Side Flatbed) - ₹280</option>
-          <option value="Poll Board*20 Fetting extra|170">Poll Board*20 Fetting extra - ₹170</option>
-          <option value="Board Inspection|300">Board Inspection - ₹300</option>
-          <option value="Visiting Card|600">Visiting Card (500 pcs) - ₹600</option>
-          <option value="PVC Card|30">PVC Card (1000 pcs) - ₹30</option>
-          <option value="Dori|30">Dori (1000 pcs) - ₹30</option>
-          <option value="Holder|6">Card Holder (1000 pcs) - ₹6</option>
-          <option value="Glow Sign Installation|500">Glow Sign Installation - ₹500</option>
-          <option value="Flex Installation|10">Flex Installation - ₹10</option>
-          <option value="Vinyl Installation|20">Vinyl Installation - ₹20</option>
-          <option value="LED Board|750">LED Board (per sq.ft.) - ₹750</option>
-          <option value="LED Service Charge|2000">LED Service Charge (with SMPS) - ₹2000</option>
-          <option value="Acrylic UV Boards (Logo)|799">Acrylic UV Boards (Logo) - ₹799</option>
-          <option value="Neon Sign Boards (Cafe/Shop)|699">Neon Sign Boards (Cafe/Shop) - ₹699</option>
-          <option value="Aluminium Led Clip On Frame|299">Aluminium Led Clip On Frame - ₹299</option>
-          <option value="Inner Cutting LED Board|1099">Inner Cutting LED Board - ₹1099</option>
-        </select>
+  <table class="price-table">
+    <tr>
+      <th>No.</th><th>Service</th><th>Rate (₹)</th>
+      <th>No.</th><th>Service</th><th>Rate (₹)</th>
+    </tr>
 
-        <label for="area">आवश्यक क्षेत्रफल या पीस / बोर्ड:</label>
-        <input type="number" id="area" name="area" placeholder="उदा: 3" min="1" required />
+    <tr><td>1</td><td>Normal Flex</td><td>12</td>        <td>18</td><td>GSB Repairing</td><td>80</td></tr>
+    <tr><td>2</td><td>Star Flex</td><td>18</td>          <td>19</td><td>ACP Elevation</td><td>200</td></tr>
+    <tr><td>3</td><td>ECO Solvent flex</td><td>70</td>   <td>20</td><td>ACP Repairing</td><td>90</td></tr>
+    <tr><td>4</td><td>Flex Board</td><td>50</td>         <td>21</td><td>GSB (Flatbed)</td><td>260</td></tr>
+    <tr><td>5</td><td>Vinyl (Plain)</td><td>35</td>      <td>22</td><td>GSB Double Side</td><td>280</td></tr>
+    <tr><td>6</td><td>Vinyl + Sunboard</td><td>80</td>   <td>23</td><td>Poll Board</td><td>170</td></tr>
+    <tr><td>7</td><td>Flex Board Star</td><td>60</td>    <td>24</td><td>Board Inspection</td><td>300</td></tr>
+    <tr><td>8</td><td>Glow Sign Board</td><td>250</td>   <td>25</td><td>Visiting Card</td><td>600</td></tr>
+    <tr><td>9</td><td>GSB Repair</td><td>80</td>         <td>26</td><td>PVC Card</td><td>30</td></tr>
+    <tr><td>10</td><td>ACP Elevation</td><td>200</td>    <td>27</td><td>Dori</td><td>30</td></tr>
+    <tr><td>11</td><td>ACP Repairing</td><td>90</td>     <td>28</td><td>Holder</td><td>6</td></tr>
+    <tr><td>12</td><td>GSB Flatbed</td><td>260</td>      <td>29</td><td>Glow Sign Install</td><td>500</td></tr>
+    <tr><td>13</td><td>GSB Double Side</td><td>280</td>  <td>30</td><td>Flex Installation</td><td>10</td></tr>
+    <tr><td>14</td><td>Poll Board</td><td>170</td>       <td>31</td><td>Vinyl Installation</td><td>20</td></tr>
+    <tr><td>15</td><td>Board Inspection</td><td>300</td> <td>32</td><td>LED Board</td><td>750</td></tr>
+    <tr><td>16</td><td>Visiting Card</td><td>600</td>    <td>33</td><td>LED Service Charge</td><td>2000</td></tr>
+    <tr><td>17</td><td>PVC Card</td><td>30</td>          <td>34</td><td>Acrylic UV / Neon / ClipOn / LED Inner</td><td>799–1099</td></tr>
 
-        <label for="total">कुल कीमत:</label>
-        <input type="text" id="total" name="total" readonly style="background: #e0f0e0; font-weight: bold" />
+    <tr>
+      <td colspan="6" style="color:red; font-weight:bold;">
+        ⚠️ Creative Design, Fitting & Travel Charges Extra.
+      </td>
+    </tr>
+  </table>
 
-        <label for="extra">अतिरिक्त जानकारी:</label>
-        <textarea id="extra" name="extra" placeholder="कोई विशेष निर्देश"></textarea>
+</div>
 
-        <button type="submit">WhatsApp पर भेजें</button>
-      </form>
-    </div>
-  </div>
+<footer>
 
-  <footer>
-    © 2025 Ray Services | 
-    <a href="https://servicestool.netlify.app/" target="_blank" rel="noopener noreferrer">Other Services</a>
-  </footer>
+  <!-- ⭐ Added bottom tagline -->
+  <div class="footer-tagline">Printing • Branding & Advertising Services Provider</div>
+  <div class="footer-tagline">Registered Unit under Govt. of India. UDYAM-CG-14-0116772</div>
 
-  <script>
-    const areaInput = document.getElementById("area");
-    const typeSelect = document.getElementById("type");
-    const totalInput = document.getElementById("total");
-    const form = document.getElementById("printForm");
-    const whatsappNumber = "917746969000"; // +91 के साथ
+  © 2025 Ray Services  
+  <a href="https://servicestool.netlify.app/" target="_blank">Other Services</a>
+</footer>
 
-    function calculateTotal() {
-      let selected = typeSelect.value.split("|");
-      if (selected.length !== 2) { totalInput.value = ""; return; }
-
-      if (areaInput.value && !isNaN(areaInput.value)) {
-        let rate = parseFloat(selected[1]);
-        let qty = parseFloat(areaInput.value);
-        let total = rate * qty;
-        totalInput.value = `₹ ${total.toLocaleString("en-IN")}`;
-      } else {
-        totalInput.value = "";
-      }
-    }
-    areaInput.addEventListener("input", calculateTotal);
-    typeSelect.addEventListener("change", calculateTotal);
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const name = form.name.value.trim();
-      const mobile = form.mobile.value.trim();
-      const location = form.location.value.trim();
-      const type = form.type.value.split("|")[0];
-      const area = form.area.value.trim();
-      const total = totalInput.value;
-      const extra = form.extra.value.trim();
-
-      const mobilePattern = /^[6-9]\d{9}$/;
-      if (!mobilePattern.test(mobile)) {
-        alert("कृपया 10 अंकों का सही मोबाइल नंबर डालें।");
-        form.mobile.focus(); return;
-      }
-      if (!name) { alert("कृपया अपना नाम दर्ज करें।"); form.name.focus(); return; }
-      if (!location) { alert("कृपया स्थान दर्ज करें।"); form.location.focus(); return; }
-      if (!type) { alert("कृपया प्रिंटिंग प्रकार चुनें।"); form.type.focus(); return; }
-      if (!area || isNaN(area) || Number(area) <= 0) {
-        alert("कृपया मात्रा/बोर्ड सही दर्ज करें।");
-        form.area.focus(); return;
-      }
-      if (!total) { alert("कृपया कुल कीमत की गणना करें।"); return; }
-
-      let message = `👋 नमस्ते!\n\nमैं सेवा के लिए जानकारी चाहता हूँ:\n\nनाम: ${name}\nमोबाइल: ${mobile}\nस्थान: ${location}\nसेवा: ${type}\nमात्रा/बोर्ड: ${area}\nकुल कीमत: ${total}\nअतिरिक्त जानकारी: ${extra}`;
-      let whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-      window.open(whatsappURL, "_blank");
-
-      alert("✅ आपका ऑर्डर WhatsApp पर भेज दिया गया है!");
-      form.reset();
-      totalInput.value = "";
-      form.name.focus();
-    });
-  </script>
 </body>
 </html>
-```
-
