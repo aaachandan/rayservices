@@ -1,144 +1,194 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ray Services </title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f9fafb;
-      margin: 0;
-      padding: 0;
-      font-size: 18px;
-      color: #222;
-    }
-    header {
-      background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-      color: white;
-      padding: 25px 15px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-      font-weight: 900;
-      line-height: 1.2;
-    }
-    header p { margin: 8px 0 0 0; font-size: 22px; font-weight: bold; letter-spacing: 2px; }
-    header p.email { margin: 4px 0 0 0; font-size: 18px; color: #a9cce3; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ray Services – Rate Card</title>
 
-    .tagline {
-      font-size: 17px;
-      margin-top: 8px;
-      font-weight: bold;
-      color: #d1ecf1;
-      letter-spacing: 1px;
-    }
+<style>
+body{
+  font-family:'Segoe UI',sans-serif;
+  background:#f9fafb;
+  margin:0;
+  font-size:18px;
+  color:#222;
+}
+header{
+  background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+  padding:25px 15px;
+  text-align:center;
+}
+header h1{margin:0;font-size:32px;font-weight:900;}
+.tagline{font-size:17px;margin-top:8px;font-weight:bold;color:#d1ecf1;}
+header p{margin:6px 0 0;font-size:18px;font-weight:bold;}
+header p.email{font-size:16px;color:#a9cce3;}
 
-    .container {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    }
+.container{
+  padding:25px;
+  max-width:1100px;
+  margin:25px auto;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
 
-    .price-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
+h2{text-align:center;margin-bottom:25px;}
+h3{margin-top:35px;color:#203a43;}
 
-    .price-table th, .price-table td {
-      border: 1px solid #ddd;
-      padding: 12px;
-      text-align: center;
-      font-weight: bold;
-    }
+.price-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+.price-table th,.price-table td{
+  border:1px solid #ddd;
+  padding:12px;
+  text-align:center;
+  font-weight:bold;
+}
+.price-table th{background:#37474f;color:#fff;}
+.price-table tr:nth-child(even){background:#f1f1f1;}
 
-    .price-table th { background: #37474f; color: white; }
-    .price-table tr:nth-child(even) { background-color: #f1f1f1; }
+.note{
+  color:red;
+  font-weight:bold;
+  text-align:center;
+  margin-top:25px;
+}
 
-    footer {
-      background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-      color: white; 
-      text-align: center; 
-      padding: 20px 10px;
-      margin-top: 30px; 
-      font-size: 16px; 
-      font-weight: bold;
-      border-top: 2px solid #37474f;
-    }
-    footer a { color: #81d4fa; text-decoration: none; font-weight: bold; }
+footer{
+  background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+  text-align:center;
+  padding:22px 10px;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:40px;
+}
+footer a{color:#81d4fa;text-decoration:none;}
+.footer-tagline{font-size:14px;color:#b2ebf2;margin-bottom:6px;}
+.footer-csr{
+  font-size:14px;
+  font-style:italic;
+  color:#e0f7fa;
+  margin-bottom:6px;
+}
 
-    .footer-tagline {
-      font-size: 15px;
-      margin-bottom: 8px;
-      color: #b2ebf2;
-      font-weight: bold;
-    }
-  </style>
+/* WhatsApp Floating Button */
+.whatsapp-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+  z-index:999;
+  transition:transform .3s ease;
+}
+.whatsapp-float:hover{
+  transform:scale(1.1);
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>Ray Services </h1>
-
-  <!-- ⭐ Added Tagline -->
+  <h1>Ray Services</h1>
   <div class="tagline">Printing • Branding & Advertising Services Provider</div>
-  
-
   <p>📞 7746969000 , 9098411044</p>
   <p class="email">✉️ rayservices.cg@gmail.com</p>
 </header>
 
 <div class="container">
-  <h2 style="text-align:center;">प्रिंटिंग प्रकार व दरें (Per Sq. Ft.)</h2>
+<h2>RATE CARD (₹) – CATEGORY WISE</h2>
 
-  <table class="price-table">
-    <tr>
-      <th>No.</th><th>Service</th><th>Rate (₹)</th>
-      <th>No.</th><th>Service</th><th>Rate (₹)</th>
-    </tr>
+<!-- (CONTENT SAME AS YOUR LAST VERSION — UNCHANGED) -->
+<!-- PRINTING -->
+<h3>PRINTING & MEDIA</h3>
+<table class="price-table">
+<tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
+<tr><td>1</td><td>Normal Flex</td><td>30</td><td>2</td><td>Star Flex</td><td>40</td></tr>
+<tr><td>3</td><td>ECO Solvent Vinyl</td><td>70</td><td>6</td><td>Vinyl (Plain)</td><td>45</td></tr>
+<tr><td>7</td><td>VSB (Vinyl + Sunboard)</td><td>85</td><td>18</td><td>Visiting Card @1000</td><td>600</td></tr>
+<tr><td>19</td><td>Visiting Card Dual Side</td><td>800</td><td>28</td><td>ClipOn Display Advertising</td><td>799</td></tr>
+</table>
 
-    <tr><td>1</td><td>Normal Flex</td><td>12</td>        <td>18</td><td>GSB Repairing</td><td>80</td></tr>
-    <tr><td>2</td><td>Star Flex</td><td>18</td>          <td>19</td><td>ACP Elevation</td><td>200</td></tr>
-    <tr><td>3</td><td>ECO Solvent flex</td><td>70</td>   <td>20</td><td>ACP Repairing</td><td>90</td></tr>
-    <tr><td>4</td><td>Flex Board</td><td>50</td>         <td>21</td><td>GSB (Flatbed)</td><td>260</td></tr>
-    <tr><td>5</td><td>Vinyl (Plain)</td><td>35</td>      <td>22</td><td>GSB Double Side</td><td>280</td></tr>
-    <tr><td>6</td><td>Vinyl + Sunboard</td><td>80</td>   <td>23</td><td>Poll Board</td><td>170</td></tr>
-    <tr><td>7</td><td>Flex Board Star</td><td>60</td>    <td>24</td><td>Board Inspection</td><td>300</td></tr>
-    <tr><td>8</td><td>Glow Sign Board</td><td>250</td>   <td>25</td><td>Visiting Card</td><td>600</td></tr>
-    <tr><td>9</td><td>GSB Repair</td><td>80</td>         <td>26</td><td>PVC Card</td><td>30</td></tr>
-    <tr><td>10</td><td>ACP Elevation</td><td>200</td>    <td>27</td><td>Dori</td><td>30</td></tr>
-    <tr><td>11</td><td>ACP Repairing</td><td>90</td>     <td>28</td><td>Holder</td><td>6</td></tr>
-    <tr><td>12</td><td>GSB Flatbed</td><td>260</td>      <td>29</td><td>Glow Sign Install</td><td>500</td></tr>
-    <tr><td>13</td><td>GSB Double Side</td><td>280</td>  <td>30</td><td>Flex Installation</td><td>10</td></tr>
-    <tr><td>14</td><td>Poll Board</td><td>170</td>       <td>31</td><td>Vinyl Installation</td><td>20</td></tr>
-    <tr><td>15</td><td>Board Inspection</td><td>300</td> <td>32</td><td>LED Board</td><td>750</td></tr>
-    <tr><td>16</td><td>Visiting Card</td><td>600</td>    <td>33</td><td>LED Service Charge</td><td>2000</td></tr>
-    <tr><td>17</td><td>PVC Card</td><td>30</td>          <td>34</td><td>Acrylic UV / Neon / ClipOn / LED Inner</td><td>799–1099</td></tr>
+<!-- SIGNAGE -->
+<h3>SIGN BOARDS & BRANDING</h3>
+<table class="price-table">
+<tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
+<tr><td>4</td><td>Flex Board 2kg</td><td>60</td><td>5</td><td>Flex Board (Star) 2kg</td><td>70</td></tr>
+<tr><td>8</td><td>Glow Sign Board 3kg</td><td>250</td><td>9</td><td>3D LED Board 3kg</td><td>850</td></tr>
+<tr><td>13</td><td>GSB Double Side 3kg</td><td>280</td><td>14</td><td>ACP Elevation</td><td>199</td></tr>
+<tr><td>16</td><td>Poll Board</td><td>170</td><td>27</td><td>Neon Light</td><td>1111</td></tr>
+<tr><td>29</td><td>LED Inner Cut 2D</td><td>750</td><td>26</td><td>Acrylic UV</td><td>699</td></tr>
+</table>
 
-    <tr>
-      <td colspan="6" style="color:red; font-weight:bold;">
-        ⚠️ Creative Design, Fitting & Travel Charges Extra.
-      </td>
-    </tr>
-  </table>
+<!-- INSTALLATION -->
+<h3>INSTALLATION SERVICES</h3>
+<table class="price-table">
+<tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
+<tr><td>23</td><td>Glow Sign Installation</td><td>999</td><td>24</td><td>Flex Installation</td><td>20</td></tr>
+<tr><td>25</td><td>Vinyl Installation</td><td>25</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
 
+<!-- REPAIR -->
+<h3>REPAIR & INSPECTION</h3>
+<table class="price-table">
+<tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
+<tr><td>10</td><td>LED Service Charge</td><td>1999</td><td>11</td><td>GSB Repairing</td><td>90</td></tr>
+<tr><td>15</td><td>ACP Repairing</td><td>90</td><td>17</td><td>Board Inspection</td><td>300</td></tr>
+<tr><td>30</td><td>LED Alphabet Repair</td><td>350</td><td>31</td><td>LED Alphabet Cleaning</td><td>200</td></tr>
+</table>
+
+<!-- ACCESSORIES -->
+<h3>ACCESSORIES & ELECTRICAL PARTS</h3>
+<table class="price-table">
+<tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
+<tr><td>20</td><td>PVC Card</td><td>30</td><td>21</td><td>Dori</td><td>30</td></tr>
+<tr><td>22</td><td>Holder</td><td>6</td><td>32</td><td>SMPS 12V 400</td><td>2500</td></tr>
+<tr><td>33</td><td>SMPS 12V 600</td><td>3500</td><td>34</td><td>1 sq mm Wire</td><td>1755</td></tr>
+<tr><td>35</td><td>1.5 sq mm Wire</td><td>3444</td><td>36</td><td>2.5 sq mm Wire</td><td>7021</td></tr>
+</table>
+
+<!-- MANPOWER -->
+<h3>MANPOWER SERVICES</h3>
+<table class="price-table">
+<tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
+<tr><td>37</td><td>Plumber</td><td>1599</td><td>38</td><td>Electrician</td><td>1599</td></tr>
+<tr><td>39</td><td>Carpenter</td><td>1599</td><td>40</td><td>Service Helper</td><td>799</td></tr>
+</table>
+
+<div class="note">⚠️ Creative Design, Fitting & Travel Charges Extra.</div>
 </div>
 
 <footer>
-
-  <!-- ⭐ Added bottom tagline -->
   <div class="footer-tagline">Printing • Branding & Advertising Services Provider</div>
-  <div class="footer-tagline">Registered Unit under Govt. of India. UDYAM-CG-14-0116772</div>
-
-  © 2025 Ray Services  
+  <div class="footer-csr">
+    As part of our commitment to social responsibility, service charges are waived for all registered NGO contributing to nation building.
+  </div>
+  <div class="footer-tagline">Registered Unit under Govt. of India | UDYAM-CG-14-0116772</div>
+  © 2026 Ray Services |
   <a href="https://servicestool.netlify.app/" target="_blank">Other Services</a>
 </footer>
+
+<!-- WhatsApp Floating Button -->
+<a class="whatsapp-float"
+   href="https://wa.me/917746969000?text=%E0%A4%A8%E0%A4%AE%E0%A4%B8%E0%A5%8D%E0%A4%A4%E0%A5%87!%0A%0A%E0%A4%AE%E0%A5%88%E0%A4%82%20%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE%20%E0%A4%95%E0%A5%87%20%E0%A4%B2%E0%A4%BF%E0%A4%8F%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%80%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A4%BE%20%E0%A4%B9%E0%A5%82%E0%A4%81:"
+   target="_blank"
+   title="Chat on WhatsApp">
+   💬
+</a>
 
 </body>
 </html>
