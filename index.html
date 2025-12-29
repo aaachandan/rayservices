@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ray Services – Rate Card</title>
 
 <style>
@@ -16,16 +16,16 @@ body{
 header{
   background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);
   color:#fff;
-  padding:22px 15px 18px;
+  padding:22px 15px;
   text-align:center;
 }
 header h1{margin:0;font-size:32px;font-weight:900;}
-.tagline{font-size:16px;margin-top:6px;font-weight:bold;color:#d1ecf1;}
-header p{margin:4px 0 0;font-size:17px;font-weight:bold;}
+.tagline{font-size:16px;font-weight:bold;color:#d1ecf1;}
+header p{margin:4px 0;font-weight:bold;}
 header p.email{font-size:15px;color:#a9cce3;}
 
 .container{
-  padding:22px 25px;
+  padding:22px;
   max-width:1100px;
   margin:10px auto;
   background:#fff;
@@ -33,29 +33,55 @@ header p.email{font-size:15px;color:#a9cce3;}
   box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
-h2{text-align:center;margin:10px 0 16px;}
-h3{margin:22px 0 10px;color:#203a43;}
+h2{text-align:center;margin:10px 0 20px;}
+h3{margin:26px 0 10px;color:#203a43;}
 
-.price-table{
+table{
   width:100%;
   border-collapse:collapse;
-  margin-top:6px;
 }
-.price-table th,
-.price-table td{
+th,td{
   border:1px solid #ddd;
   padding:12px;
   text-align:center;
   font-weight:bold;
 }
-.price-table th{background:#37474f;color:#fff;}
-.price-table tr:nth-child(even){background:#f1f1f1;}
+th{background:#37474f;color:#fff;}
+tr:nth-child(even){background:#f1f1f1;}
 
 .note{
   color:red;
   font-weight:bold;
   text-align:center;
-  margin:22px 0 10px;
+  margin:20px 0 6px;
+}
+
+/* ULTRA COMPACT ADDRESS */
+.address-box{
+  background:#e91e63;
+  color:#fff;
+  padding:8px 10px;
+  border-radius:6px;
+}
+.address-grid{
+  display:flex;
+  gap:10px;
+}
+.address-item{
+  flex:1;
+  font-size:12px;
+  line-height:1.25;
+  text-align:center;
+}
+.address-item span{
+  display:block;
+  font-size:11px;
+  font-weight:800;
+  margin-bottom:2px;
+}
+
+@media(max-width:768px){
+  .address-grid{flex-direction:column;}
 }
 
 footer{
@@ -63,7 +89,7 @@ footer{
   color:#fff;
   text-align:center;
   padding:18px 10px;
-  font-size:15px;
+  font-size:14px;
   font-weight:bold;
   margin-top:30px;
 }
@@ -86,7 +112,6 @@ footer a{color:#81d4fa;text-decoration:none;}
   font-size:30px;
   text-decoration:none;
   box-shadow:0 8px 20px rgba(0,0,0,.3);
-  z-index:999;
 }
 </style>
 </head>
@@ -103,63 +128,71 @@ footer a{color:#81d4fa;text-decoration:none;}
 <div class="container">
 <h2>RATE CARD (₹) – CATEGORY WISE</h2>
 
-<!-- PRINTING -->
 <h3>PRINTING & MEDIA</h3>
-<table class="price-table">
+<table>
 <tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
 <tr><td>1</td><td>Normal Flex</td><td>30</td><td>2</td><td>Star Flex</td><td>40</td></tr>
-<tr><td>3</td><td>ECO Solvent Vinyl</td><td>70</td><td>4</td><td>Vinyl (Plain)</td><td>45</td></tr>
-<tr><td>5</td><td>VSB (Vinyl + Sunboard)</td><td>85</td><td>6</td><td>Visiting Card</td><td>600</td></tr>
-<tr><td>7</td><td>Visiting Card Dual Side</td><td>800</td><td>8</td><td>ClipOn Display Advertising</td><td>799</td></tr>
+<tr><td>3</td><td>Vinyl (Plain)</td><td>45</td><td>4</td><td>ECO Solvent Vinyl</td><td>70</td></tr>
+<tr><td>5</td><td>VSB (Vinyl + Sun Board)</td><td>85</td><td>6</td><td>Flex Board 2kg</td><td>60</td></tr>
+<tr><td>7</td><td>Flex Board (Star) 2kg</td><td>70</td><td>8</td><td>Poll Board</td><td>170</td></tr>
+<tr><td>9</td><td>Visiting Card</td><td>600</td><td>10</td><td>Visiting Card (Dual)</td><td>800</td></tr>
 </table>
 
-<!-- SIGNAGE -->
 <h3>SIGN BOARDS & BRANDING</h3>
-<table class="price-table">
+<table>
 <tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
-<tr><td>1</td><td>Flex Board 2kg</td><td>60</td><td>2</td><td>Flex Board (Star) 2kg</td><td>70</td></tr>
-<tr><td>3</td><td>Glow Sign Board 3kg</td><td>250</td><td>4</td><td>3D LED Board 3kg</td><td>850</td></tr>
-<tr><td>5</td><td>GSB Double Side 3kg</td><td>280</td><td>6</td><td>ACP Elevation</td><td>199</td></tr>
-<tr><td>7</td><td>Poll Board</td><td>170</td><td>8</td><td>Neon Light</td><td>1111</td></tr>
-<tr><td>9</td><td>LED Inner Cut 2D</td><td>750</td><td>10</td><td>Acrylic UV</td><td>699</td></tr>
+<tr><td>1</td><td>Glow Sign Board 3kg</td><td>250</td><td>2</td><td>GSB Double Side 3kg</td><td>280</td></tr>
+<tr><td>3</td><td>2D LED Board</td><td>750</td><td>4</td><td>3D LED Board</td><td>850</td></tr>
+<tr><td>5</td><td>ACP Elevation</td><td>199</td><td>6</td><td>Acrylic UV</td><td>699</td></tr>
+<tr><td>7</td><td>Clip-On Display</td><td>799</td><td>8</td><td>Neon Light</td><td>1111</td></tr>
 </table>
 
-<!-- INSTALLATION -->
-<h3>INSTALLATION SERVICES</h3>
-<table class="price-table">
-<tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
-<tr><td>1</td><td>Glow Sign Installation</td><td>999</td><td>2</td><td>Flex Installation</td><td>20</td></tr>
-<tr><td>3</td><td>Vinyl Installation</td><td>25</td><td>—</td><td>—</td><td>—</td></tr>
-</table>
-
-<!-- REPAIR -->
 <h3>REPAIR & INSPECTION</h3>
-<table class="price-table">
+<table>
 <tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
-<tr><td>1</td><td>LED Service Charge</td><td>1999</td><td>2</td><td>GSB Repairing</td><td>90</td></tr>
-<tr><td>3</td><td>ACP Repairing</td><td>90</td><td>4</td><td>Board Inspection</td><td>300</td></tr>
-<tr><td>5</td><td>LED Alphabet Repair</td><td>350</td><td>6</td><td>LED Alphabet Cleaning</td><td>200</td></tr>
+<tr><td>1</td><td>GSB Repairing</td><td>90</td><td>2</td><td>ACP Repairing</td><td>90</td></tr>
+<tr><td>3</td><td>LED Cleaning</td><td>200</td><td>4</td><td>LED Repair</td><td>350</td></tr>
+<tr><td>5</td><td>LED Service</td><td>1999</td><td>6</td><td>Board Inspection</td><td>300</td></tr>
 </table>
 
-<!-- ACCESSORIES -->
+<h3>INSTALLATION SERVICES</h3>
+<table>
+<tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
+<tr><td>1</td><td>Flex Installation</td><td>20</td><td>2</td><td>Vinyl Installation</td><td>25</td></tr>
+<tr><td>3</td><td>Glow Sign Installation</td><td>999</td><td>—</td><td>—</td><td>—</td></tr>
+</table>
+
 <h3>ACCESSORIES & ELECTRICAL PARTS</h3>
-<table class="price-table">
+<table>
 <tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
 <tr><td>1</td><td>PVC Card</td><td>30</td><td>2</td><td>Dori</td><td>30</td></tr>
 <tr><td>3</td><td>Holder</td><td>6</td><td>4</td><td>SMPS 12V 400</td><td>2500</td></tr>
-<tr><td>5</td><td>SMPS 12V 600</td><td>3500</td><td>6</td><td>1 sq mm Wire</td><td>1755</td></tr>
-<tr><td>7</td><td>1.5 sq mm Wire</td><td>3444</td><td>8</td><td>2.5 sq mm Wire</td><td>7021</td></tr>
+<tr><td>5</td><td>SMPS 12V 600</td><td>3500</td><td>6</td><td>1 sq mm 90m-Wire</td><td>1599</td></tr>
+<tr><td>7</td><td>1.5 sq mm 90m-Wire</td><td>3099</td><td>8</td><td>2.5 sq mm 90m-Wire</td><td>4599</td></tr>
 </table>
 
-<!-- MANPOWER -->
 <h3>MANPOWER SERVICES</h3>
-<table class="price-table">
+<table>
 <tr><th>No.</th><th>Service</th><th>Rate</th><th>No.</th><th>Service</th><th>Rate</th></tr>
 <tr><td>1</td><td>Plumber</td><td>1599</td><td>2</td><td>Electrician</td><td>1599</td></tr>
 <tr><td>3</td><td>Carpenter</td><td>1599</td><td>4</td><td>Service Helper</td><td>799</td></tr>
 </table>
 
 <div class="note">⚠️ Creative Design, Fitting & Travel Charges Extra.</div>
+
+<div class="address-box">
+  <div class="address-grid">
+    <div class="address-item">
+      <span>Registered Address</span>
+      Ward 60, Ayodhya Nagar, Santoshi Nagar,<br>Raipur (C.G.) – 492001
+    </div>
+    <div class="address-item">
+      <span>Workshop Address</span>
+      Near Madhu Badi, Hanuman Nagar,<br>Santoshi Nagar, Raipur (C.G.) – 492001, +919713511999
+    </div>
+  </div>
+</div>
+
 </div>
 
 <footer>
@@ -173,7 +206,7 @@ footer a{color:#81d4fa;text-decoration:none;}
 </footer>
 
 <a class="whatsapp-float"
-href="https://wa.me/917746969000?text=नमस्ते!%0A%0Aमैं%20सेवा%20के%20लिए%20जानकारी%20चाहता%20हूँ:"
+href="https://wa.me/917746969000"
 target="_blank">💬</a>
 
 </body>
